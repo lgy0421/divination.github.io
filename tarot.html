@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>tarot</title>
+	<style type='text/css'>
+        .pic {
+            width:155px;
+            height: 250px;
+			top: 10px;
+ 	 		margin-bottom: 30px;
+			margin-right: 80px;
+			transition: 0.5s;
+        }
+		.pic:hover{
+			transform: scale(1.1);
+		}
+		.text{
+			margin-left: 30%;
+			color: #E2CFEA;
+			left:200px;
+		}
+		.cpic{
+			margin-left:290px;
+			margin-top: 80px;
+		}
+		.checkback{
+			position: absolute;
+            top:100px;
+            left:500px;
+			flex-wrap: nowrap;
+		}
+		.checkY{
+			position: absolute;
+            top:300px;
+			left:750px;
+			flex-wrap: nowrap;
+			transition: 0.5s;
+		}
+		.checkY:hover{
+			transform: scale(1.1);
+		}
+		.checkN{
+			position: absolute;
+            top:300px;
+			left:540px;
+			flex-wrap: nowrap;
+			transition: 0.5s;
+		}
+		.checkN:hover{
+			transform: scale(1.1);
+		}
+		.home{
+			top:10px;
+			left:10px;
+			scale: 0.4;
+			position: absolute;
+
+		}
+    </style>
+	<script>
+		let picktnum=0;
+		let flag=[0,0,0,0,0,0,0,0,0,0];
+		function pick(){
+			let a=Math.floor(Math.random() * 10);
+		}
+		function t1(){
+			if(flag[1]==0&&picktnum<3){
+				flag[1]=1;
+				picktnum++;
+				document.getElementById("t1").setAttribute( "src", "tarot\\tarot_click.png" );
+				if(picktnum==3) nxt();
+			}
+		}
+		function t2(){
+			if(flag[2]==0&&picktnum<3){
+				flag[2]=1;
+				picktnum++;
+				document.getElementById("t2").setAttribute( "src", "tarot\\tarot_click.png" );
+				if(picktnum==3) nxt();
+			}
+		}
+		function t3(){
+			if(flag[3]==0&&picktnum<3){
+				flag[3]=1;
+				picktnum++;
+				document.getElementById("t3").setAttribute( "src", "tarot\\tarot_click.png" );
+				if(picktnum==3) nxt();
+			}
+		}
+		function t4(){
+			if(flag[4]==0&&picktnum<3){
+				flag[4]=1;
+				picktnum++;
+				document.getElementById("t4").setAttribute( "src", "tarot\\tarot_click.png" );
+				if(picktnum==3) nxt();
+			}
+		}
+		function t5(){
+			if(flag[5]==0&&picktnum<3){
+				flag[5]=1;
+				picktnum++;
+				document.getElementById("t5").setAttribute( "src", "tarot\\tarot_click.png" );
+				if(picktnum==3) nxt();
+			}
+		}
+		function t6(){
+			if(flag[6]==0&&picktnum<3){
+				flag[6]=1;
+				picktnum++;
+				document.getElementById("t6").setAttribute( "src", "tarot\\tarot_click.png" );
+				if(picktnum==3) nxt();
+			}
+		}
+		function t7(){
+			if(flag[7]==0&&picktnum<3){
+				flag[7]=1;
+				picktnum++;
+				document.getElementById("t7").setAttribute( "src", "tarot\\tarot_click.png" );
+				if(picktnum==3) nxt();
+			}
+		}
+		function t8(){
+			if(flag[8]==0&&picktnum<3){
+				flag[8]=1;
+				picktnum++;
+				document.getElementById("t8").setAttribute( "src", "tarot\\tarot_click.png" );
+				if(picktnum==3) nxt();
+			}
+		}
+		function nxt(){
+			for(let i=1;i<=8;i++){
+				if(flag[i]==1){
+					document.getElementById("t"+i).setAttribute( "src", "tarot\\tarot_result.png" );
+				}
+				else{
+					document.getElementById("t"+i).setAttribute( "src", "tarot\\tarot_blank.png" );
+				}
+			}
+			document.getElementById("checkback").src="tarot\\tarot_check_back.png";
+			document.getElementById("checkback_Y").src="tarot\\tarot_check_Y.png";
+			document.getElementById("checkback_N").src="tarot\\tarot_check_N.png";
+		}
+		function re(){
+			picktnum=0;
+			for(let i=1;i<=8;i++){
+				document.getElementById("t"+i).setAttribute( "src", "tarot\\tarot_0.png" );
+				flag[i]=0;
+			}
+			document.getElementById("checkback").src="";
+			document.getElementById("checkback_Y").src="";
+			document.getElementById("checkback_N").src="";
+		}
+		function conf(){
+			window.location.href = "tarot_result.html";
+		}
+		function home(){
+			window.location.href = "main.html"
+		}
+	</script>
+</head>
+<body bgcolor="#10002B">
+	<h1 class="text">塔羅牌 隨意抽三張</h1>
+    <div id="card" class="cpic">
+		<img src="tarot\tarot_0.png" class="pic" onclick="t1()" id="t1">
+		<img src="tarot\tarot_0.png" class="pic" onclick="t2()" id="t2">
+		<img src="tarot\tarot_0.png" class="pic" onclick="t3()" id="t3">
+		<img src="tarot\tarot_0.png" class="pic" onclick="t4()" id="t4">
+		<br>
+		<img src="tarot\tarot_0.png" class="pic" onclick="t5()" id="t5">
+		<img src="tarot\tarot_0.png" class="pic" onclick="t6()" id="t6">
+		<img src="tarot\tarot_0.png" class="pic" onclick="t7()" id="t7">
+		<img src="tarot\tarot_0.png" class="pic" onclick="t8()" id="t8">
+	</div>
+	<div>
+		<img src="" id="checkback" class="checkback">
+		<img src="" id="checkback_Y" class="checkY" onclick="conf()">
+		<img src="" id="checkback_N" class="checkN" onclick="re()">
+	</div>
+	<img src="home.png" onclick="home()" class="home">
+</body>
+</html>

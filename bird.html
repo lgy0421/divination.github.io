@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>sus</title>
+	<style>
+		#follow {
+			position: absolute;
+			text-align: center;
+			Z-index:10;
+		}
+		.bg{
+			position: absolute;
+			left:210px;
+			top:10px;
+			Z-index:0;
+		}
+		.bird{
+			position:absolute;
+			z-index:8;
+			scale: 0.5;
+		}
+		.reload{
+			z-index: 5;
+			position: absolute;
+			left:210px;
+			top:10px;
+			display: none;
+		}
+		.fire{
+			z-index: 5;
+			position: absolute;
+			left:210px;
+			top:10px;
+			display: none;
+		}
+		.final{
+			position: absolute;
+			left:210px;
+			top:10px;
+			Z-index:11;
+			display: none;
+		}
+		.food{
+			scale: 0.5;
+			position: absolute;
+			top:540px;
+			left:90px;
+		}
+		.home{
+			top:10px;
+			left:10px;
+			scale: 0.4;
+			position: absolute;
+
+		}
+	</style>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+	<script>
+		let msx=0,msy=0,bdx=210,bdy=50;
+		$(document).mousemove(function(e) {
+			if(e.pageX-45>210){
+				$("#follow").css({
+					left:e.pageX-45,
+					top:e.pageY-45
+				});
+				msx=e.pageX;
+				msy=e.pageY;
+			}
+		});
+
+		let flag=1;
+
+		$(document).ready(function(){
+			$('#follow').click(function (e) {
+				if(flag==1){
+					flag=0;
+					if(Math.abs((msx-161)-bdx)<=100&&Math.abs((msy-146)-bdy)<=100){
+						document.getElementById("final").style.display="block";
+						let foo = setTimeout(turn, 500);
+						function turn() {
+							document.getElementById("final").style.display="none";
+							window.location.href = "bird_result.html";
+						}
+					}
+					document.getElementById("fire").style.display="block";
+					foo = setTimeout(disa, 100);
+					function disa() {
+						document.getElementById("fire").style.display="none";
+					}
+					
+					foo = setTimeout(ps, 200);
+					function ps() {
+						document.getElementById("sg").style.display="none";
+						document.getElementById("reload").style.display="block";
+					}
+					
+					foo = setTimeout(re, 750);
+					function re(){
+						document.getElementById("sg").style.display="block";
+						document.getElementById("reload").style.display="none";
+					}
+
+					foo = setTimeout(end, 900);
+					function end() {
+						flag=1;
+					}
+				}
+			});
+		});
+		
+		setInterval(birdx, 0.5);
+		setInterval(birdy, 50);
+		
+		let speed=10;
+
+		$(document).ready(function(){
+			$('#food').click(function (e) {
+				speed--;
+				if(speed<1)speed=1;
+			});
+		});
+
+		function birdx() {
+			document.getElementById("bird").style.left = bdx+"px";
+			document.getElementById("bird").style.top = bdy+"px";
+			bdx=bdx+speed;
+			if(bdx>1300){
+				bdx=210;
+			}
+		}
+		
+		function birdy() {
+			bdy=bdy+Math.floor(Math.random() * 50)-25;
+			if(bdy<50)bdy=bdy+5;
+			if(bdy>200)bdy=bdy-5;
+		}
+
+		function home(){
+			window.location.href = "main.html"
+		}
+	</script>
+</head>
+<body bgcolor="black">
+	<div id="follow"><img src="bird/Crosshair.png"/></div>
+	<div class="bg" id="tree"><img src="bird/Tree_background.png" id="tree"/></div>
+	<div class="bg" ><img src="bird/grass.png"/></div>
+	<div class="bg" id="sg"><img src="bird/Shotgun.png"/></div>
+	<div class="bird" id="bird"><img src="bird/Bird flying.gif"/></div>
+	<div class="reload" id="reload"><img src="bird/Shotgun_load.gif"/></div>
+	<div class="fire" id="fire"><img src="bird\Muzzle.png"/></div>
+	<div class="final" id="final"><img src="bird\fading_out.gif"/></div>
+	<div class="food" id="food"><img src="bird\food.png"/></div>
+	<img src="home.png" onclick="home()" class="home">
+</body>
+</html>

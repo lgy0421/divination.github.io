@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>tarot</title>
+	<style type='text/css'>
+        .text{
+            margin-top:50px;
+			color: #E2CFEA;
+			margin-left: 300px;
+		}
+        .pic {
+            width:260px;
+            height: 420px;
+			top: 10px;
+ 	 		margin-bottom: 30px;
+			margin-right: 200px;
+			transition: 0.5s;
+        }
+		.pic:hover{
+			transform: scale(1.1);
+		}
+		.cpic{
+			position: absolute;
+            margin-top: 100px;
+			margin-left:110px;
+		}
+		.job{
+			position: absolute;
+			color: #E2CFEA;
+			font-size: 30px;
+			top: 150px;
+			left:210px;
+		}
+		.love{
+			position: absolute;
+			color: #E2CFEA;
+			font-size: 30px;
+			top: 150px;
+			left:670px;
+		}
+		.health{
+			position: absolute;
+			color: #E2CFEA;
+			font-size: 30px;
+			top: 150px;
+			left:1140px;
+		}
+		.home{
+			top:10px;
+			left:10px;
+			scale: 0.4;
+			position: absolute;
+
+		}
+    </style>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+	<script>
+		let sp=Math.floor(Math.random() * 100);
+        let r1=Math.floor(Math.random() * 3);
+        let r2=Math.floor(Math.random() * 3);
+		while(r2==r1) r2=Math.floor(Math.random() * 3);
+        let r3=Math.floor(Math.random() * 3);
+		while(r3==r1||r3==r2) r3=Math.floor(Math.random() * 3);
+		if(sp==1){
+			r1=3;
+			r2=3;
+			r3=3;
+		}
+		function t1(){
+			document.getElementById("t1").src="tarot\\all_tarot\\"+r1+".png";
+			$(document).ready(function(){
+				$("#t1").hover(function(){
+					$(this).css("opacity", "0.1");
+					}, function(){
+					$(this).css("opacity", "1");
+				});
+			});
+			document.getElementById("res1").src="tarot\\exp_j\\"+r1+".png";
+		}
+		function t2(){
+			document.getElementById("t2").src="tarot\\all_tarot\\"+r2+".png";
+			$(document).ready(function(){
+				$("#t2").hover(function(){
+					$(this).css("opacity", "0.1");
+					}, function(){
+					$(this).css("opacity", "1");
+				});
+			});
+			document.getElementById("res2").src="tarot\\exp_j\\"+r2+".png";
+		}
+		function t3(){
+			document.getElementById("t3").src="tarot\\all_tarot\\"+r3+".png";
+			$(document).ready(function(){
+				$("#t3").hover(function(){
+					$(this).css("opacity", "0.1");
+					}, function(){
+					$(this).css("opacity", "1");
+				});
+			});
+			document.getElementById("res3").src="tarot\\exp_j\\"+r3+".png";
+		}
+		function home(){
+			window.location.href = "main.html"
+		}
+	</script>
+</head>
+<body bgcolor="#10002B">
+    <h1 class="text">塔羅牌</h1>
+	<div class="job">事業</div>
+	<div class="love">愛情</div>
+	<div class="health">健康</div>
+	<div class="cpic">
+		<img src="tarot\tarot_result.png" class="pic" id="res1">
+		<img src="tarot\tarot_result.png" class="pic" id="res2">
+		<img src="tarot\tarot_result.png" class="pic" id="res3">
+	</div>
+	<div id="card" class="cpic">
+		<img src="tarot\tarot_result.png" class="pic" onclick="t1()" id="t1" >
+		<img src="tarot\tarot_result.png" class="pic" onclick="t2()" id="t2">
+		<img src="tarot\tarot_result.png" class="pic" onclick="t3()" id="t3">
+	</div>
+	<img src="home.png" onclick="home()" class="home">
+</body>
+</html>

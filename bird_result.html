@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>sus</title>
+	<style>
+		.bg{
+			position: absolute;
+			left:210px;
+			top:10px;
+			Z-index:0;
+		}
+        .result{
+            position: absolute;
+			left:210px;
+			top:10px;
+			Z-index:0;
+            display: none;
+        }
+		.home{
+			top:10px;
+			left:10px;
+			scale: 0.4;
+			position: absolute;
+
+		}
+	</style>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+	<script>
+        luck=Math.floor(Math.random() * 2)+3;
+		let foo = setTimeout(bird, 2000);
+		function bird(){
+			document.getElementById("bird").style.display="none";
+		}
+        foo = setTimeout(result, 1500);
+		function result(){
+			document.getElementById("result"+luck).style.display="block";
+		}
+		function home(){
+			window.location.href = "main.html"
+		}
+	</script>
+</head>
+<body bgcolor="black">
+    <div class="bg" ><img src="bird\fading_out.gif"/></div>
+	<div class="bg" id="bird"><img src="bird/pegeion.gif"/></div>
+    <div class="result" id="result4"><img src="bird/4.gif"/></div>
+    <div class="result" id="result3"><img src="bird/3.gif"/></div>
+	<img src="home.png" onclick="home()" class="home">
+</body>
+</html>

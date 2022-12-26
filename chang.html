@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>sus</title>
+	<style type='text/css'>
+        .c {
+            margin: auto;
+            text-align: center;
+            color: white;
+        }
+        .center {
+            position: absolute;
+            top:100px;
+            width: 33%;
+            left:33%;
+        }
+        .ctitle {
+            text-align: center;
+            top:100px;
+            font-size:larger;
+        }
+        .ctext {
+            padding-left: 10%;
+            text-align: left;
+            top:100px;
+            font-size: large;
+        }
+        .pic {
+            width: 500px;
+            height: 500px;
+        }
+        .l {
+            width: 500px;
+            height: 100px;
+        }
+        .re{
+            position: absolute;
+            bottom:100px;
+            left:50%;
+            width: 50px;
+            height: 50px;
+        }
+        .home{
+			top:10px;
+			left:10px;
+			scale: 0.4;
+			position: absolute;
+
+		}
+    </style>
+    <script>
+        function pick(){
+            let luk=["大吉","吉","半吉","小吉","末吉","凶"];
+            let wish=["會充分地實現","能被實現","難以立刻地實現","很花時間但會實現","不好實現","不可能實現"];
+            let sick=["會治癒","會治好","雖然拖長但會治好","會拖長，但是不會影響性命","危險","情況從糟糕變得難以理解"];
+            let people=["會出現","變遲才出現","變成遲遲地才出現","似乎會變得更遲才出現","不會出現","別找了吧,浪費時間"];
+            let lost=["會找到吧","會出現","難出現","難出現","幾乎不會出現","在焚化爐裡"];
+            let home=["好","沒有障礙","不好也不壞","不太好","暫時不好,但會好轉","搬哪都不對"];
+            let love=["會全部變為好結果","會過得很好","會不好也不壞","現在要節制，如果往後的話好","全部不好","放棄吧,下一個會更好"];
+            let luck=Math.floor(Math.random() * 100);
+            if(luck==100)luck=5;
+            else luck=luck%5;
+            document.getElementById("chanback").setAttribute( "src", "chang\\chanback.png" );
+            let title=document.getElementById("chantitle");
+            let txt=document.getElementById("chantext");
+            title.innerHTML=luk[luck];
+            txt.innerHTML="";
+            txt.innerHTML+="<br>你的願望"+wish[luck];
+            txt.innerHTML+="<br>";
+            txt.innerHTML+="<br>你的疾病"+sick[luck];
+            txt.innerHTML+="<br>";
+            txt.innerHTML+="<br>你的貴人"+people[luck];
+            txt.innerHTML+="<br>";
+            txt.innerHTML+="<br>你遺失的物品"+lost[luck];
+            txt.innerHTML+="<br>";
+            txt.innerHTML+="<br>搬遷是"+home[luck]+"的";
+            txt.innerHTML+="<br>";
+            txt.innerHTML+="<br>你的婚姻和交往"+love[luck];
+        }
+        function re(){
+            document.getElementById("chanback").setAttribute( "src", "" );
+            let title=document.getElementById("chantitle");
+            let txt=document.getElementById("chantext");
+            title.innerHTML="";
+            txt.innerHTML="";
+        }
+        function home(){
+			window.location.href = "main.html"
+		}
+    </script>
+    </head>
+</head>
+<body bgcolor="black">
+    <div class="c">
+	<h1>求籤 按一下籤桶</h1>
+    <img src="chang\bocket.png" class="pic" onclick="pick()"/><br>
+    <img src="" class="center" id="chanback"/>
+    </div>
+    <div class="center">
+        <br>
+        <div class="ctitle" id="chantitle"></div>
+        <div class="ctext" id="chantext"></div>
+    </div>
+    <img src="home.png" onclick="home()" class="home">
+</body>
+</html>
